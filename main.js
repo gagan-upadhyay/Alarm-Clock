@@ -23,3 +23,42 @@ function updateClock() {
 }
 
 setInterval(updateClock, 1000);
+
+//---------------------------------------------------------------------
+// set alarm functions
+
+
+let counter = 0;
+const arr = [];
+const setAlarmBtn = document.getElementById('setAlarmBtn');
+const alarmElements = [
+  document.getElementById('1'),
+  document.getElementById('2'),
+  document.getElementById('3'),
+  document.getElementById('4')
+];
+
+function processTime() {            
+  const timeInput = document.getElementById('setTime');
+  return timeInput.value;  
+}
+
+setAlarmBtn.addEventListener("click", () => {
+  const time = processTime();
+
+  if (counter < 4) {
+    arr.push(time);
+  } else {
+    arr.shift();
+    arr.push(time);
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== undefined) {
+      alarmElements[i].textContent = arr[i];
+    }
+  }
+
+  counter++;
+});
+
