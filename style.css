@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(
+        180deg,
+        rgba(81, 226, 245, 0.5),
+        rgba(157, 249, 239, 0.5),
+        rgba(237, 247, 86, 0.5),
+        rgba(255, 168, 182, 0.5),
+        rgba(162, 128, 137, 0.5)
+      );
+}
+
+.container{    
+    position: relative; 
+    display:flex;
+    justify-content: space-evenly;   
+    border-radius:20px;
+    margin: 50px 120px;
+    width:70vw;
+    height:70vh;
+    background-image: linear-gradient(180deg,
+     rgba(160, 210, 235, 0.5)0%,
+     rgba(229, 234, 245, 0.5)30%,
+     rgba(208, 189, 244, 0.5)40%,
+     rgba(132, 88, 179, 0.5)50%,
+     rgba(162, 128, 137, 0.5)100%
+     );
+}
+
+/* .realTimeclock-container{
+    position:sticky;
+
+} */
+
+#realTimeclock{
+    position: absolute;
+    top:5vh;
+    left:30vw;
+    align-items: center;
+    justify-content: center; 
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 20px;
+
+}
+
+.setAlarm-container{
+    position: absolute;
+    top:15vh;
+    left:29vw;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around ;
+    align-items: center;
+}
+
+ #setTime{
+    position:absolute;
+    top:1vh;
+    border-radius:20px;
+    width:8vw;
+    font-size: 18px;
+    border:none    
+}
+    
+.setAlarm-btn{
+    position:absolute;
+    top:1vh;
+    left:10vw;
+    width:10vw;
+}
+ 
