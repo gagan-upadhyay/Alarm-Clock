@@ -9,6 +9,7 @@ function updateClock() {
     minutes= (minutes<10) ? "0" + minutes : minutes;
     seconds= (seconds<10) ? "0" + seconds : seconds;
 
+  var currentTimeIntwo=hours+":"+minutes;
     var currentTime = hours + ":" + minutes +":" + seconds;
     if (hours>=12||hours<24){
     currentTime+=" PM";
@@ -20,9 +21,11 @@ function updateClock() {
     clockElement.style.fontSize="30px";
     // displaying the current time on the gui
     clockElement.innerHTML=currentTime;  
+    return [currentTimeIntwo, seconds];
+
 }
 
-setInterval(updateClock, 1000);
+setInterval(updateClock,1000);
 
 //---------------------------------------------------------------------
 // set alarm functions
@@ -61,4 +64,43 @@ setAlarmBtn.addEventListener("click", () => {
 
   counter++;
 });
+
+
+function alarm(){
+  var returnedValues=updateClock();
+  var realtime=returnedValues[0];
+  
+  if (arr.includes(realtime)){
+    console.log(arr);
+    console.log(realtime);
+    alert("Job DOne!!");  
+  }
+}
+
+function checkseconds(){
+  let returnedValues = updateClock()
+  let seconds=parseInt(returnedValues[1]);
+  console.log(seconds);
+
+  if(seconds===0){
+    // console.log("second===0");
+    alarm();
+  }
+}
+setInterval(checkseconds, 1000);
+
+// ------------------delete functionality--------------------
+
+
+
+var deletebtn1=getElementById('btn1');
+var deletebtn2=getElementById('btn2');
+var deletebtn3=getElementById('btn3');
+var deletebtn4=getElementById('btn4');
+
+deletebtn1.addEventListener("click", ()=>{
+
+  
+
+})
 
