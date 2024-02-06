@@ -1,3 +1,5 @@
+
+
 function updateClock() {
     var currentDate=new Date();
     var hours=currentDate.getHours();
@@ -46,6 +48,8 @@ function processTime() {
   return timeInput.value;  
 }
 
+
+
 setAlarmBtn.addEventListener("click", () => {
   const time = processTime();
 
@@ -65,42 +69,71 @@ setAlarmBtn.addEventListener("click", () => {
   counter++;
 });
 
+//---------------------- Custom ALert-----------------------
+function showAlert(message) {
+  var alertBox = document.getElementById('custom-alert');
+  var messageElement = document.getElementById('alert-message');
+  
+  messageElement.textContent = message;
+  alertBox.classList.remove('hidden');
+}
+
+function hideAlert() {
+  var alertBox = document.getElementById('custom-alert');
+  alertBox.classList.add('hidden');
+}
+
+document.getElementById('alert-ok').addEventListener('click', hideAlert);
+
+// ----------------------------------------------------------------
 
 function alarm(){
   var returnedValues=updateClock();
   var realtime=returnedValues[0];
-  
-  if (arr.includes(realtime)){
-    console.log(arr);
-    console.log(realtime);
-    alert("Job DOne!!");  
+  var audioElement= new Audio('loudalarm.mp3');
+  if (arr.includes(realtime)){    
+    audioElement.play(); //will play audio 
+    showAlert("Time's UP!!!");      
   }
 }
+
+
 
 function checkseconds(){
   let returnedValues = updateClock()
   let seconds=parseInt(returnedValues[1]);
   console.log(seconds);
 
-  if(seconds===0){
-    // console.log("second===0");
+  if(seconds===0){    
     alarm();
   }
 }
 setInterval(checkseconds, 1000);
 
+
+
+
+
+
+
+
+
+
 // ------------------delete functionality--------------------
 
 
 
-var deletebtn1=getElementById('btn1');
-var deletebtn2=getElementById('btn2');
+var delbtn1=getElementById("btn1");
+var delbtn2=getElementById('btn2');
 var deletebtn3=getElementById('btn3');
 var deletebtn4=getElementById('btn4');
 
-deletebtn1.addEventListener("click", ()=>{
 
-  
+deltn1.addEventListener("click", ()=>{
+  console.log(arr);
+  if(arr[0]!==undefined){
+    arr[0]==undefined;
+  }
 
 })
 
