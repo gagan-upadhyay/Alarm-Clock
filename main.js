@@ -123,17 +123,17 @@ setInterval(checkseconds, 1000);
 
 
 
-var delbtn1=getElementById("btn1");
-var delbtn2=getElementById('btn2');
-var deletebtn3=getElementById('btn3');
-var deletebtn4=getElementById('btn4');
+// var delbtn1=getElementById("btn1");
+// var delbtn2=getElementById('btn2');
+// var deletebtn3=getElementById('btn3');
+// var deletebtn4=getElementById('btn4');
 
 
-deltn1.addEventListener("click", ()=>{
-  console.log(arr);
-  if(arr[0]!==undefined){
-    arr[0]==undefined;
-  }
+// deltn1.addEventListener("click", ()=>{
+//   console.log(arr);
+//   if(arr[0]!==undefined){
+//     arr[0]==undefined;
+//   }
 
-})
+// })
 
