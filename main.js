@@ -32,7 +32,6 @@ setInterval(updateClock,1000);
 
 
 let counter = 0;
-const arr = [];
 const setAlarmBtn = document.getElementById('setAlarmBtn');
 const alarmElements = [
   document.getElementById('1'),
@@ -40,41 +39,94 @@ const alarmElements = [
   document.getElementById('3'),
   document.getElementById('4')
 ];
-
 function processTime() {            
   const timeInput = document.getElementById('setTime');
   return timeInput.value;  
 }
 
 
+// To store data in cache memory and display on the screen also retaining the data when reload button hits
+
+var cachedArray = JSON.parse(localStorage.getItem('cachedArray')) || []; //getting array form cache
 
 setAlarmBtn.addEventListener("click", () => {
   const time = processTime();
 
-  if (counter < 4) {
-    arr.push(time);
-  } else {
-    arr.shift();
-    arr.push(time);
+  if (cachedArray.length<4 && cachedArray.includes(undefined)){
+    cachedArray.push(time);
+  } else if(cachedArray.includes('Alarm 0')){      
+      cachedArray[0]=time;
+  } else if(cachedArray.includes('Alarm 1')){      
+    cachedArray[1]=time;
+} else if(cachedArray.includes('Alarm 2')){      
+  cachedArray[2]=time;
+} else if(cachedArray.includes('Alarm 3')){
+  cachedArray[3]=time;
+} 
+
+  else {
+    showAlert("limit reached");
   }
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== undefined) {
-      alarmElements[i].textContent = arr[i];
+
+// const indexOfAlarm = cachedArray.findIndex(item => item && item.startsWith('Alarm'));
+// console.log(indexOfAlarm);
+// if (cachedArray.length < 4 && cachedArray.includes(undefined)) {
+//   cachedArray.push(time);
+// } else if (indexOfAlarm !== -1) {
+//   cachedArray[indexOfAlarm] = time;
+// } else {
+//   showAlert("Limit reached");
+// }
+
+
+  console.log("After storing data "+ cachedArray);
+  for (let i = 0; i < cachedArray.length; i++) {
+    if (cachedArray[i] !== undefined || cachedArray.includes('Alarm 0')) {
+      alarmElements[i].textContent = cachedArray[i];
     }
   }
 
   counter++;
+  localStorage.setItem('cachedArray', JSON.stringify(cachedArray)); //setting cache storage
 });
 
-//---------------------- Custom ALert-----------------------
+//loading data from local storage putting back on the alarmElement to show on screen.
+window.addEventListener('load', () => {
+
+  if (cachedArray.length>4){
+    console.log("length has been reached");
+    setAlarmBtn.addEventListener("click", () => {
+      showAlert("Limit reached");
+    }
+  )}
+
+  for (let i = 0; i < cachedArray.length; i++) {
+    if (cachedArray[i] !== undefined) {
+      alarmElements[i].textContent = cachedArray[i];
+    }
+  }
+});
+
+
+//---------------------- Custom Alert for alarm-----------------------
 function showAlert(message) {
   var alertBox = document.getElementById('custom-alert');
   var messageElement = document.getElementById('alert-message');
-  
+  var img = document.querySelector('.alert-content img');
+  var msg=document.getElementById('alert-message');
   messageElement.textContent = message;
   alertBox.classList.remove('hidden');
-}
+
+  if(message==='Set Alarm first!'){
+    img.src='wrong.jpg';
+    msg.innerText="Alarm Not Set"
+  }else if (message==="Limit reached"){    
+
+  // Changing the src attribute to the new image URL
+    img.src = 'wrong.jpg';
+    }
+  }
 
 function hideAlert() {
   var alertBox = document.getElementById('custom-alert');
@@ -89,13 +141,11 @@ function alarm(){
   var returnedValues=updateClock();
   var realtime=returnedValues[0];
   var audioElement= new Audio('loudalarm.mp3');
-  if (arr.includes(realtime)){    
+  if (cachedArray.includes(realtime)){    
     audioElement.play(); //will play audio 
     showAlert("Time's UP!!!");      
   }
 }
-
-
 
 function checkseconds(){
   let returnedValues = updateClock()
@@ -112,7 +162,7 @@ setInterval(checkseconds, 1000);
 
 
 
-
+// console.log(cachedArray)
 
 // ---------------------------------------next day work--------------
 
@@ -121,34 +171,33 @@ setInterval(checkseconds, 1000);
 
 
 
-// var delbtn1=getElementById("btn1");
-// var delbtn2=getElementById('btn2');
-// var deletebtn3=getElementById('btn3');
-// var deletebtn4=getElementById('btn4');
+var delbtn1=document.getElementById("btn1");
+var delbtn2=document.getElementById('btn2');
+var delbtn3=document.getElementById('btn3');
+var delbtn4=document.getElementById('btn4');
 
 
-// deltn1.addEventListener("click", ()=>{
-//   console.log(arr);
-//   if(arr[0]!==undefined){
-//     arr[0]==undefined;
+function removeAlarm(id){
+  // work on the below if to resolve whn user click =s in the del btn if there is no data set 
+//   if (cachedArray.includes){
+
 //   }
-
-// })
-
-// CacheStorage:
-
-// // Create or retrieve the array from the web's cache (localStorage or sessionStorage)
-// var cachedArray = JSON.parse(localStorage.getItem('cachedArray')) || [];
-
-// // Ensure that the cachedArray is of size 4
-// if (cachedArray.length !== 4) {
-//     // Fill or truncate the array as needed
-//     cachedArray = [1, 2, 3, 4]; // Example array with 4 elements
-// }
-
-// // Update the array as needed
-// // For example, adding a new element
-// cachedArray.push(5);
-
-// // Store the updated array back in the cache
-// localStorage.setItem('cachedArray', JSON.stringify(cachedArray));
+ 
+  if (cachedArray[id]!=='No Alarm' || cachedArray[id]!==undefined){
+    cachedArray[id]="Alarm"+' '+id;
+  }
+  localStorage.setItem('cachedArray', JSON.stringify(cachedArray));
+  alarmElements[id].textContent="Alarm" +" "+parseInt(id+1);
+}
+delbtn1.addEventListener('click',()=>{  
+  removeAlarm(0);
+})
+delbtn2.addEventListener('click',()=>{
+  removeAlarm(1);
+})
+delbtn3.addEventListener('click',()=>{
+  removeAlarm(2);
+})
+delbtn4.addEventListener('click',()=>{
+  removeAlarm(3);
+})

@@ -47,10 +47,10 @@ body{
     transform:rotate(-5deg);
 }
 50%{
-    transform: (0deg);
+    transform: rotate(0deg);
 }
 75%{
-    transform: (5deg);
+    transform: rotate(5deg);
 }
 100%{
     transform:rotate(10deg);
@@ -112,10 +112,10 @@ body{
     
 }
 
-.alert-content button{
+.alert-content button{  /*positioning of the alert Ok button is intentional*/
     position:absolute;
     /* opacity: 0.4; */
-    top:18vh;
+    top:18.5vh;
     left:3.75vw;
     background-color: #A9D8F4; 
     border-radius: 8px; 
