@@ -66,7 +66,7 @@ if (cachedArray.length < 4 || cachedArray.includes(undefined)) {
 
   console.log("After storing data "+ cachedArray);
   for (let i = 0; i < cachedArray.length; i++) {
-    if (cachedArray[i] !== undefined || cachedArray.includes('Alarm 0')) {
+    if (cachedArray[i] !== undefined || cachedArray.includes('Alarm')) {
       alarmElements[i].textContent = cachedArray[i];
     }
   }
