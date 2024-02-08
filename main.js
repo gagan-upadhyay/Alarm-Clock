@@ -50,34 +50,18 @@ function processTime() {
 var cachedArray = JSON.parse(localStorage.getItem('cachedArray')) || []; //getting array form cache
 
 setAlarmBtn.addEventListener("click", () => {
-  const time = processTime();
+  const time = processTime(); //fetching the time value 
 
-  if (cachedArray.length<4 && cachedArray.includes(undefined)){
-    cachedArray.push(time);
-  } else if(cachedArray.includes('Alarm 0')){      
-      cachedArray[0]=time;
-  } else if(cachedArray.includes('Alarm 1')){      
-    cachedArray[1]=time;
-} else if(cachedArray.includes('Alarm 2')){      
-  cachedArray[2]=time;
-} else if(cachedArray.includes('Alarm 3')){
-  cachedArray[3]=time;
-} 
-
-  else {
-    showAlert("limit reached");
-  }
-
-
-// const indexOfAlarm = cachedArray.findIndex(item => item && item.startsWith('Alarm'));
-// console.log(indexOfAlarm);
-// if (cachedArray.length < 4 && cachedArray.includes(undefined)) {
-//   cachedArray.push(time);
-// } else if (indexOfAlarm !== -1) {
-//   cachedArray[indexOfAlarm] = time;
-// } else {
-//   showAlert("Limit reached");
-// }
+//this will populate the cachedArray which is fetched from local storage of browser, and will store the alarm set by user.
+const indexOfAlarm = cachedArray.findIndex(item => item && item.startsWith('Alarm'));
+console.log(indexOfAlarm);
+if (cachedArray.length < 4 || cachedArray.includes(undefined)) {
+  cachedArray.push(time);
+} else if (indexOfAlarm !== -1) {
+  cachedArray[indexOfAlarm] = time;
+} else {
+  showAlert("Limit reached"); //if user tries to add 5th alarm a custom alert will be popped.
+}
 
 
   console.log("After storing data "+ cachedArray);
@@ -138,7 +122,7 @@ document.getElementById('alert-ok').addEventListener('click', hideAlert);
 // ----------------------------------------------------------------
 
 function alarm(){
-  var returnedValues=updateClock();
+  var returnedValues=updateClock(); //fetching
   var realtime=returnedValues[0];
   var audioElement= new Audio('loudalarm.mp3');
   if (cachedArray.includes(realtime)){    
@@ -147,6 +131,8 @@ function alarm(){
   }
 }
 
+
+// this function will run in the background to ensure the seconds units
 function checkseconds(){
   let returnedValues = updateClock()
   let seconds=parseInt(returnedValues[1]);
@@ -156,19 +142,10 @@ function checkseconds(){
     alarm();
   }
 }
-setInterval(checkseconds, 1000);
+setInterval(checkseconds, 1000); //function call for every second
 
 
-
-
-
-// console.log(cachedArray)
-
-// ---------------------------------------next day work--------------
-
-
-// ------------------delete functionality--------------------
-
+// -------------------delete functionality----------------------------
 
 
 var delbtn1=document.getElementById("btn1");
@@ -178,11 +155,7 @@ var delbtn4=document.getElementById('btn4');
 
 
 function removeAlarm(id){
-  // work on the below if to resolve whn user click =s in the del btn if there is no data set 
-//   if (cachedArray.includes){
 
-//   }
- 
   if (cachedArray[id]!=='No Alarm' || cachedArray[id]!==undefined){
     cachedArray[id]="Alarm"+' '+id;
   }

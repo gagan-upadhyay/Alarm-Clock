@@ -1,4 +1,4 @@
-body{
+body {
     user-select: none;
     margin: 0;
     padding: 0;
@@ -9,263 +9,211 @@ body{
         rgba(237, 247, 86, 0.5),
         rgba(255, 168, 182, 0.5),
         rgba(162, 128, 137, 0.5)
-      );
+    );
 }
 
-.container{    
-    position: relative; 
-    display:flex;
-    /* justify-content: space-evenly;  */
-    align-items: center ;  
-    border-radius:20px;
-    /* margin: 50px 50px 50px 50px; */
-    margin-left:30vw;
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 30vw;
     margin-top: 20vh;
-    width:40vw;
-    height:70vh;
-    background-image: linear-gradient(180deg,
-     rgba(160, 210, 235, 0.5)0%,
-     rgba(229, 234, 245, 0.5)30%,
-     rgba(208, 189, 244, 0.5)40%,
-     rgba(132, 88, 179, 0.5)50%,
-     rgba(162, 128, 137, 0.5)100%
-     );
-     box-shadow: 10px 10px 5px #C4A3AD;
-    }
-
-/* custom Alert for alarm clock */
-
-
-
-
-
-@keyframes ringing{
-0%{
-    transform: rotate(-10deg);
-}
-25%{
-    transform:rotate(-5deg);
-}
-50%{
-    transform: rotate(0deg);
-}
-75%{
-    transform: rotate(5deg);
-}
-100%{
-    transform:rotate(10deg);
-}
+    width: 40vw;
+    height: 70vh;
+    border-radius: 20px;
+    background-image: linear-gradient(
+        180deg,
+        rgba(160, 210, 235, 0.5) 0%,
+        rgba(229, 234, 245, 0.5) 30%,
+        rgba(208, 189, 244, 0.5) 40%,
+        rgba(132, 88, 179, 0.5) 50%,
+        rgba(162, 128, 137, 0.5) 100%
+    );
+    box-shadow: 10px 10px 5px #C4A3AD;
 }
 
-/* opacity of alert window when mouse hovers over it */
-#custom-alert:hover .alert-content{
-    opacity:1;
+/* Keyframes */
+@keyframes ringing {
+    0% { transform: rotate(-10deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(10deg); }
 }
-#custom-alert {    
+
+/* Opacity of alert window when mouse hovers over it */
+#custom-alert:hover .alert-content {
+    opacity: 1;
+}
+
+/* Opacity of alert window */
+#custom-alert .alert-content {
+    opacity: 0.4;
+}
+
+
+#custom-alert {
     position: absolute;
     top: 2vh;
     left: 45vw;
     border-radius: 20px;
     background-color: rgba(160, 210, 235, 0.5);
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    }
-    
+}
+
 .alert-content {
     position: absolute;
     transition: opacity 0.3s ease;
-    background-color:rgba(160, 210, 235, 0.5);
+    background-color: rgba(160, 210, 235, 0.5);
     padding: 10px;
-    width:100px;
+    width: 100px;
     height: 100px;
-    left:1vw;
+    left: 1vw;
     border-radius: 10px;
     border: none;
     display: flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.alert-content img{   
+.alert-content img {
     position: absolute;
-    top:1vh;
-    left:2vw;
-    animation: ringing; 
+    top: 1vh;
+    left: 2vw;
+    animation: ringing;
     animation-duration: 0.12s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    height:60px; 
-    /* opacity: 0.4 ; */
-    width:70px;    
-    border-radius:20px;
-    border: none;    
+    height: 60px;
+    width: 70px;
+    border-radius: 20px;
+    border: none;
 }
 
-#custom-alert:hover .alert-content{
-    opacity:1;
+#alert-message {
+    position: absolute;
+    top: 9vh;
+    left: 3.5vw;
 }
 
-#alert-message{
-    position:absolute;
-    top:9vh;
-    left:3.5vw;
-    
-}
-
-.alert-content button{  /*positioning of the alert Ok button is intentional*/
-    position:absolute;
-    /* opacity: 0.4; */
-    top:18.5vh;
-    left:3.75vw;
-    background-color: #A9D8F4; 
-    border-radius: 8px; 
+.alert-content button {
+    position: absolute;
+    top: 18.5vh;
+    left: 3.75vw;
+    background-color: #A9D8F4;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-/* opacity of alert window */
-#custom-alert .alert-content{
-    opacity:0.4
-}
+
 
 .hidden {
     display: none;
-    }
+}
 
-    /* ---------------timeclock------------------------- */
-
-#realTimeclock{
+/* Time clock */
+#realTimeclock {
     position: absolute;
-    top:5vh;
-    /* top:25px; */
-    left:14vw;
-    box-shadow: 15px 10px 10px#A9D8F4;
-    border-radius: 20px;    
+    top: 5vh;
+    left: 14vw;
+    box-shadow: 15px 10px 10px #A9D8F4;
+    border-radius: 20px;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     font-family: 'Droid Sans', sans-serif;
     font-size: 20px;
     cursor: none;
 }
 
-/* ---------------------------------------- */
-.setAlarm-container{
+/* Set alarm container */
+.setAlarm-container {
     position: absolute;
-    top:15vh;
-    left:13vw;
-    display:flex;
-    /* flex-wrap: wrap; */
-    justify-content:space-around ;
+    top: 15vh;
+    left: 13vw;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 }
- #setTime{
+
+#setTime {
     padding: 5px 5px;
-    position:absolute;
-    top:1vh;
-    box-shadow: 15px 10px 10px#A9D8F4;
-    border-radius:18px;
-    width:8vw;
+    position: absolute;
+    top: 1vh;
+    box-shadow: 15px 10px 10px #A9D8F4;
+    border-radius: 18px;
+    width: 8vw;
     font-size: 18px;
-    border:none    
-}
-    
-@keyframes setalarm{
-    0%{
-        transform: scale(1);
-        background-color: green;
-    }
-    50%{
-        transform: scale(1.1);
-        background-color: red;
-    }
-    100%{
-        transform: scale(1);
-        background-color: blue;
-    }
+    border: none;
 }
 
-.setAlarm-btn button{
-    width:100px;
-    height:30px;
+@keyframes setalarm {
+    0% { transform: scale(1); background-color: green; }
+    50% { transform: scale(1.1); background-color: red; }
+    100% { transform: scale(1); background-color: blue; }
+}
+
+.setAlarm-btn button {
+    width: 100px;
+    height: 30px;
     font-size: 15px;
     border: none;
     color: black;
-    position:absolute;
+    position: absolute;
     text-align: center;
-    text-decoration: none;
-    padding:5px 5px;
-    top:1.2vh;
-    left:10vw;
-    box-shadow: 10px 10px 10px#A9D8F4;
-    cursor:pointer;
+    padding: 5px 5px;
+    top: 1.2vh;
+    left: 10vw;
+    box-shadow: 10px 10px 10px #A9D8F4;
     background-color: rgba(138, 196, 20, 0.863);
     border-radius: 10px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.setAlarm-btn button:hover{
+.setAlarm-btn button:hover {
     background-color: green;
-    animation:setalarm 0.2s ease-in-out infinite;
+    animation: setalarm 0.2s ease-in-out infinite;
 }
 
-input:focus{
+input:focus {
     outline: none;
 }
- 
-.alarms-space-container{
-    /* border-style: dashed; */
+
+/* Alarms space container */
+.alarms-space-container {
     position: absolute;
-    top:29vh;
-    left:-2vw;
-    right:6vw;
-    bottom:1vh;
-    display:inline;
-    flex-wrap: wrap;
+    top: 29vh;
+    left: -2vw;
+    right: 6vw;
+    bottom: 1vh;
+    display: inline-flex;
     justify-content: space-around;
     align-items: center;
-
 }
 
-.alarm-detail{    
-    /* justify-content: space-around; */
-    /* align-items: center; */
-    position:absolute;
+.alarm-detail {
+    position: absolute;
     display: inline-flex;
-    /* border-style:dashed; */
-    
-    
 }
 
-.alarm-time{
-    position:absolute;
-    border:none;
-    border-radius: 18px;;
-    width:10vw;
-    height:5vh;
+.alarm-time {
+    position: absolute;
+    border-radius: 18px;
+    width: 10vw;
+    height: 5vh;
     padding-top: 3vh;
     background-color: rgb(107, 107, 215);
     text-align: center;
-    /* vertical-align: middle; */
-    
 }
 
-.delete-btn{
-    /* border:dotted;
-    width:200px;
-    background-color: green;
-    
-    padding-left:7vw;
-    padding-top:4vh;
-    padding-right: 3vw; */
-    position:absolute;
-    left:10vw;
-    padding:9px 10px;
-
+.delete-btn {
+    position: absolute;
+    left: 10vw;
+    padding: 9px 10px;
 }
-.alarms-space-container button{
-    border:none;
-    width:50px;
-    height:28px;
-    background-color:rgb(229, 57, 57);
-    cursor:pointer;
+
+.alarms-space-container button {
+    border: none;
+    width: 50px;
+    height: 28px;
+    background-color: rgb(229, 57, 57);
+    cursor: pointer;
     border-radius: 10px;
 }
