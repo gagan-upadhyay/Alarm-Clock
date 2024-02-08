@@ -1,5 +1,3 @@
-
-
 function updateClock() {
     var currentDate=new Date();
     var hours=currentDate.getHours();
@@ -13,11 +11,11 @@ function updateClock() {
 
   var currentTimeIntwo=hours+":"+minutes;
     var currentTime = hours + ":" + minutes +":" + seconds;
-    if (hours>=12||hours<24){
-    currentTime+=" PM";
-    }else{
-        currentTime+=" AM";
-    }
+    // if (hours>=12||hours<24){
+    // currentTime+=" PM";
+    // }else{
+    //     currentTime+=" AM";
+    // }
     //changing the font-size of clockElement
     var clockElement = (document.getElementById("realTimeclock"));
     clockElement.style.fontSize="30px";
@@ -116,7 +114,7 @@ setInterval(checkseconds, 1000);
 
 
 
-
+// ---------------------------------------next day work--------------
 
 
 // ------------------delete functionality--------------------
@@ -137,3 +135,20 @@ setInterval(checkseconds, 1000);
 
 // })
 
+// CacheStorage:
+
+// // Create or retrieve the array from the web's cache (localStorage or sessionStorage)
+// var cachedArray = JSON.parse(localStorage.getItem('cachedArray')) || [];
+
+// // Ensure that the cachedArray is of size 4
+// if (cachedArray.length !== 4) {
+//     // Fill or truncate the array as needed
+//     cachedArray = [1, 2, 3, 4]; // Example array with 4 elements
+// }
+
+// // Update the array as needed
+// // For example, adding a new element
+// cachedArray.push(5);
+
+// // Store the updated array back in the cache
+// localStorage.setItem('cachedArray', JSON.stringify(cachedArray));

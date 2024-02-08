@@ -63,7 +63,7 @@ body{
 }
 #custom-alert {    
     position: absolute;
-    top: 1vh;
+    top: 2vh;
     left: 45vw;
     border-radius: 20px;
     background-color: rgba(160, 210, 235, 0.5);
@@ -82,7 +82,7 @@ body{
     left:1vw;
     border-radius: 10px;
     border: none;
-    /* display: flex; */
+    display: flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
