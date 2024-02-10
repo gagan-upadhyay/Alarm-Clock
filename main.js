@@ -30,8 +30,6 @@ setInterval(updateClock,1000);
 //---------------------------------------------------------------------
 // set alarm functions
 
-
-let counter = 0;
 const setAlarmBtn = document.getElementById('setAlarmBtn');
 const alarmElements = [
   document.getElementById('1'),
@@ -71,7 +69,6 @@ if (cachedArray.length < 4 || cachedArray.includes(undefined)) {
     }
   }
 
-  counter++;
   localStorage.setItem('cachedArray', JSON.stringify(cachedArray)); //setting cache storage
 });
 
